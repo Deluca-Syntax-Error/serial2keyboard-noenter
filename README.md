@@ -1,3 +1,6 @@
+# Que hace este fork
+Este fork es una adaptacion del código original creado por Robotto pero adaptado a un proyecto escolar, el proyecto consiste en controlar un sistema windows7-11(esto debido a las hotkeys que se usan pero se podria adaptar según el OS que se use) con un control remoto IR, se agrega un código para un arduino con un receptor IR, este receptor al recibir ciertos código con un control remoto especifico envia ciertos bytes por el serial, el script serial2keyboard.py según el byte que recibe hace una order diferente, por ejemplo hay bytes especiales para que presione la tecla windows, suba/baje el volumen, toque enter, etc.
+
 # serial2keyboard
 Python script that listens to serial data and pushes virtual keyboard keys. Baudrate defaults to 9600, but is changeable with the optional second command line agument. 
 

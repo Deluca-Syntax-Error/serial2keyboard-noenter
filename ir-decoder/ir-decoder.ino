@@ -125,9 +125,13 @@ int vol(char v, int cant) {
     vol = 0x07;
   }
   
+<<<<<<< HEAD
   for (int i = 0; i < cant; i++) { // ARREGLADO: faltaba i=0
     Serial.write(vol);
     delay(150); // CAMBIO: era 300, ahora 150
   }
   return 0;
 }
+=======
+}
+>>>>>>> master

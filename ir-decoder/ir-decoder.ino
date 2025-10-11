@@ -48,7 +48,7 @@ void loop()
             vol('-', 5);
             break;
           case 18930:
-            move(0x10)
+            move(0x10);
             break;
           case 19443:
             move(0x11);

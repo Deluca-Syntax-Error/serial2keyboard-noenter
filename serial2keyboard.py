@@ -9,6 +9,7 @@ import glob
 superpresionado = False #si esta presionado este se suelta al momento de tocar otra tecla de forma que haga combinación
 movermouse = True #cambia(si es verdadero las flechas mueven el mouse) el que se mueve al presionar las flechas(up,down,etc)
 tecladoenpantalla = False #this is when keyboard is on screen
+chromeabierto = True
 
 def list_ports():
     """ Lista todos los puertos seriales disponibles """
@@ -45,6 +46,7 @@ SPECIAL_KEYS = {
     0x10 : Key.left,     # left arrow
     0x11 : Key.right,    # right arrow 
     0x12 : Key.space,    # space or left click
+    0x13 : teclado,
 }
 
 if len(sys.argv) < 2:

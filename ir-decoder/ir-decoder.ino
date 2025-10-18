@@ -34,7 +34,7 @@ void loop() {
             ful();
             break;
           case 17419:
-            exe("osk");
+            exe("vk");
             break;
           case 3058:
             move(0x12);

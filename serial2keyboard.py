@@ -34,11 +34,11 @@ SERIAL_CODE_TO_ACTION = {
     18956: 12,
     19468: 13,
     19981: 14,
-    20491: 15,
+    16394: 15,
     21004: 16,
-    16394: 17,
+    20491: 17,
     12812: 18,
-    1229: 19,
+    12299: 19,
     15373: 20,
     15886: 21
 }
@@ -133,7 +133,7 @@ def ejecutar_accion(opcion):
         case 3:
             if movermouse:
                 x, y = mouse.position
-                mouse.position = (x, y - 50)
+                mouse.position = (x, y - 30)
                 print("Mover mouse arriba")
             else:
                 print("Presionar flecha arriba")
@@ -143,7 +143,7 @@ def ejecutar_accion(opcion):
         case 4:
             if movermouse:
                 x, y = mouse.position
-                mouse.position = (x - 50, y)
+                mouse.position = (x - 30, y)
                 print("Mover mouse izquierda")
             else:
                 print("Presionar flecha izquierda")
@@ -153,7 +153,7 @@ def ejecutar_accion(opcion):
         case 5:
             if movermouse:
                 x, y = mouse.position
-                mouse.position = (x, y + 50)
+                mouse.position = (x, y + 30)
                 print("Mover mouse abajo")
             else:
                 print("Presionar flecha abajo")
@@ -163,7 +163,7 @@ def ejecutar_accion(opcion):
         case 6:
             if movermouse:
                 x, y = mouse.position
-                mouse.position = (x + 50, y)
+                mouse.position = (x + 30, y)
                 print("Mover mouse derecha")
             else:
                 print("Presionar flecha derecha")

@@ -20,22 +20,41 @@ void setup() {
 }
 
 void loop() {
-  int key = getIrKey();
+	int key = getIrKey();
   
-  if (key != 0) {
-    for (int i = 0; i < 21; i++) {
+
+  
+	if (key != 0) 
+	{
+		Serial.println(key);
+	}
+    /*for (int i = 0; i < 21; i++) {
       if (key == keymap[i]) {
         switch (keymap[i]) {
           case 11789:
             exe("shutdown /s /t 0");
             break;
           case 16907:
-            exe("chrome");
-            ful();
-            break;
-          case 17419:
             exe("vk");
             break;
+          case 17419:
+            exe("chrome");
+            break;
+          case 17932: 
+	    
+	  case 18443: 
+
+	  case 18596: 
+
+	  case 19468: 
+	  
+	  case 19981: 
+
+	  case 20491: 
+	
+	  case 21004: 
+	  
+	  case 16394:
           case 3058:
             move(0x12);
             break;
@@ -57,11 +76,14 @@ void loop() {
           case 2545:
             move(0x09);
             break;
+	  case 14348:
+	    move(0x13);
+	    break;
         }
         break; // Salir del for cuando encuentre la tecla
       }
     }
-  }
+  }*/
   
   delay(150); // CAMBIO: era 1000, ahora 150
 }

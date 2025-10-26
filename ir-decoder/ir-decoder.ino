@@ -61,3 +61,45 @@ int getIrKey() {
   return 0;
 }
 
+<<<<<<< HEAD
+=======
+int sendText(char* tx) {
+  Serial.write(tx);
+  Serial.write(0x02);
+  delay(200); // CAMBIO: era 500, ahora 200
+  return 0;
+}
+
+int exe(char* tx) {
+  Serial.write(0x00);
+  delay(200); // CAMBIO: era 500, ahora 200
+  Serial.write("r");
+  delay(200); // CAMBIO: era 500, ahora 200
+  Serial.write(tx);
+  delay(200); // CAMBIO: era 500, ahora 200
+  Serial.write(0x02);
+  delay(200); // CAMBIO: era 500, ahora 200
+  return 0;
+}
+
+int ful() {
+  Serial.write(0x03);
+  delay(200); // CAMBIO: era 500, ahora 200
+  return 0;
+}
+
+int vol(char v, int cant) {
+  byte vol;
+  if (v == '+') {
+    vol = 0x06;
+  } else if (v == '-') {
+    vol = 0x07;
+  }
+  
+  for (int i = 0; i < cant; i++) { // ARREGLADO: faltaba i=0
+    Serial.write(vol);
+    delay(150); // CAMBIO: era 300, ahora 150
+  }
+  return 0;
+}
+>>>>>>> 24916d06ea6a12c5da61bcfc4911f00031c9bc60

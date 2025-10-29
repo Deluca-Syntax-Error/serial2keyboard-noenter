@@ -1,38 +1,113 @@
-# Que hace este fork
-Este fork es una adaptacion del código original creado por Robotto pero adaptado a un proyecto escolar, el proyecto consiste en controlar un sistema windows7-11(esto debido a las hotkeys que se usan pero se podria adaptar según el OS que se use) con un control remoto IR, se agrega un código para un arduino con un receptor IR, este receptor al recibir ciertos código con un control remoto especifico envia ciertos bytes por el serial, el script serial2keyboard.py según el byte que recibe hace una order diferente, por ejemplo hay bytes especiales para que presione la tecla windows, suba/baje el volumen, toque enter, etc.
+# Control Remoto para PC con Arduino y Python
 
-# serial2keyboard
-Python script that listens to serial data and pushes virtual keyboard keys. Baudrate defaults to 9600, but is changeable with the optional second command line agument. 
+## Proyecto técnico – Escuela Técnica N°2 de Munro  
+**Autores:** Fabricio Deluca, Ezequiel Giménez y Thiago Robledo  
 
-This works really well with Arduino's 
-```Serial.prinln()``` function, as it waits for a newline terminated ASCII string to arrive, so an arduino could go:
-```Serial.println("password");``` and this program would type ```password``` and press [ENTER] for you.
+---
 
-# requirements if you want to run it with python
+## Descripción del Proyecto  
+
+Este proyecto tiene como objetivo controlar un sistema Windows mediante un control remoto infrarrojo reciclado, utilizando un **Arduino Uno** y un **lector IR** reutilizado.  
+
+El sistema permite ejecutar acciones comunes sin necesidad de teclado ni ratón, ofreciendo una forma alternativa de interacción con la computadora.  
+
+El **Arduino** recibe señales del control remoto, las interpreta y las envía por **puerto USB** a un script de **Python**, el cual ejecuta las acciones correspondientes en el sistema operativo.  
+
+Además, el programa informa por voz cada acción realizada utilizando la librería `pyttsx3`, simulando el comportamiento de un asistente virtual.  
+
+---
+
+## Funcionalidades Principales  
+
+- Abrir **Google** directamente desde el control remoto.  
+- Acceder rápidamente a **redes sociales** como Facebook, Instagram o YouTube.  
+- Abrir **Gmail** en el navegador predeterminado.  
+- Lanzar el **Explorador de archivos**.  
+- Mostrar un **teclado en pantalla** libre de uso:  
+  [Free Virtual Keyboard](https://freevirtualkeyboard.com/virtualkeyboard/)  
+- Confirmación por voz mediante `pyttsx3`, informando la acción realizada.  
+
+---
+
+## Componentes Utilizados  
+
+### Hardware  
+- **Arduino UNO**  
+- **Sensor IR** (receptor infrarrojo reciclado)  
+- **Control remoto infrarrojo antiguo**  
+- **Cable USB** para conexión con PC  
+
+### Software  
+- **Python 3** (en sistema Windows)  
+- Librerías Python:
+  - `pyserial` (comunicación con Arduino)
+  - `os` y `subprocess` (ejecución de programas)
+  - `pyttsx3` (síntesis de voz)
+- **Arduino IDE**  
+- **Free Virtual Keyboard** (uso libre, no requiere instalación)  
+
+---
+
+## Funcionamiento General  
+
+1. El **Arduino UNO** capta las señales IR del control remoto.  
+2. Traduce cada señal en un **código único** y lo envía por el puerto **serial USB** al sistema.  
+3. El script en **Python** recibe los datos, los interpreta y ejecuta la acción correspondiente en Windows.  
+4. El sistema **anuncia por voz** la acción ejecutada gracias a `pyttsx3`.  
+
+---
+
+## Ejemplo de Uso  
+
+| Botón del control | Acción en Windows              | Voz del sistema                  |
+|-------------------|--------------------------------|----------------------------------|
+| 2                 | Abre Google Chrome             | "Abriendo Google"                |
+| 6                 | Abre Gmail                     | "Abriendo Gmail"                 |
+| 1                 | Abre el teclado virtual         | "Mostrando teclado en pantalla"  |
+| 7                 | Abre el explorador de archivos | "Abriendo explorador"            |
+
+---
+
+## Asistente por Voz  
+
+El sistema utiliza **pyttsx3**, una librería libre que permite la **síntesis de voz sin conexión a internet**.  
+Esto brinda una experiencia similar a la de un **asistente virtual**, totalmente local y personalizable.  
+
+---
+
+## Objetivo Educativo  
+
+Este proyecto fue desarrollado como parte de una práctica técnica en la **Escuela Técnica N°2 de Munro**, con el objetivo de:  
+
+- Aplicar conocimientos de **electrónica y programación**.  
+- Reutilizar **componentes electrónicos** (control remoto y sensor IR).  
+- Integrar **Arduino con Python** para crear una interfaz hombre-máquina accesible.  
+- Promover soluciones de **accesibilidad y control remoto**.  
+
+---
+
+## Instalación y Uso  
+
+### 1. Arduino  
+Cargar el código `.ino` en el Arduino UNO usando el **Arduino IDE**.  
+Conectar el sensor IR al pin definido en el código (por defecto, pin 11).  
+
+### 2. Python  
+Instalar dependencias:  
+```bash
+pip3 install pyserial pyttsx3
 ```
-pip3 install pynput pyserial
+Ejecutar script
+```bash
+python3 --port PORT --BAUD BAUD
 ```
+### 3. Control remoto
+Apuntar al sensor IR y presionar un botón para ejecutar la acción asignada.
 
-# how to run it with python3
-Easiest way if you have python installed is to just ```python3 serial2keyboard.py [port] [optional: baudrate]``` 
-This shold run on any operating system with the required packages installed.
+## Licencias y Créditos
+- Free Virtual Keyboard – Software libre de uso: https://freevirtualkeyboard.com/virtualkeyboard/
+- Código del proyecto bajo licencia GPLv3.
+- Desarrollado por Fabricio Deluca, Ezequiel Giménez y Thiago Robledo, con fines educativos para la Técnica 2 de Munro.
 
-# Running the precompiled binaries
-
-There's precompiled binaries built with pyinstaller (--onefile) for Windows, OSX and linux.
-
-They shouldn't require you to install anything else... 
-
-On windows type something like: 
-```serial2keyboard.exe COM3 9600```
-
-On linux you go:
-```./serial2keyboard /dev/ttyUSB0 9600```
-
-Mac users, of course, already know how to do this, but in case you forgot:
-```./serial2keyboardOSX /dev/tty.usbserial-1410 9600```
-
-Bonus for Windows users: [installing any program as a service](https://stackoverflow.com/a/26626771) (untested) 
-# Waitaminute.. what's my serial port??
-Just run the program without any additional arguments to run a scan that results in a list of suitable canditates. Thank you to CalPolyUROV for the nifty serial list function [from here](https://github.com/CalPolyUROV/UROV2019/blob/master/raspi/snr/comms/serial/serial_finder.py) 
-
+## Contacto
+Técnica 2 de Munro – 7'2 Proyecto IRIS (2025)

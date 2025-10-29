@@ -99,7 +99,7 @@ pip3 install pyserial pyttsx3
 ```
 Ejecutar script
 ```bash
-python3 --port PORT --BAUD BAUD
+python3 serial2keyboard.py --port PORT --BAUD BAUD
 ```
 ### 3. Control remoto
 Apuntar al sensor IR y presionar un botón para ejecutar la acción asignada.

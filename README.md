@@ -95,7 +95,7 @@ Conectar el sensor IR al pin definido en el código (por defecto, pin 11).
 ### 2. Python  
 Instalar dependencias:  
 ```bash
-pip3 install pyserial pyttsx3
+pip3 install pynput pyserial pyttsx3
 ```
 Ejecutar script
 ```bash

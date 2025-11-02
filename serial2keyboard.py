@@ -5,7 +5,7 @@ import re
 import argparse
 import threading
 import queue
-
+#import subprocess
 import serial  
 import pyttsx3
 from pynput.mouse import Controller as MouseController, Button
@@ -203,7 +203,8 @@ def ejecutar_accion(opcion):
         case 8:
             print("Abrir programa 'vk' (start vk)")
             speak_async("Abriendo el programa de teclado")
-            os.system("start vk")
+            os.startfile("vk.exe")
+            #subprocess.run(['vk.exe'])
 
         case 9:
             print("Abrir Google")

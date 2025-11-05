@@ -260,14 +260,14 @@ def ejecutar_accion(opcion):
                 keyboard.release('-')
             #speak_async("Reduciendo zoom")
 
-        case 18:
+        case 19:
             print("Minimizar (Win + Down)")
             with keyboard.pressed(Key.cmd):
                 keyboard.press(Key.down)
                 keyboard.release(Key.down)
             #speak_async("Ventana minimizada")
 
-        case 19:
+        case 18:
             print("Maximizar (Win + Up)")
             with keyboard.pressed(Key.cmd):
                 keyboard.press(Key.up)
@@ -300,7 +300,7 @@ def ejecutar_accion(opcion):
 
         case _:
             print("Opción no válida:", opcion)
-            speak_async("Opción no válida")
+            #speak_async("Opción no válida")
 
 def main(port: str, baud: int, timeout: float, debounce_seconds: float):
     last_seen = {}  # codigo -> timestamp
@@ -342,7 +342,7 @@ def main(port: str, baud: int, timeout: float, debounce_seconds: float):
                 accion = SERIAL_CODE_TO_ACTION.get(codigo)
                 if accion is None:
                     print(f"Código desconocido recibido: {codigo} (line: '{line}')")
-                    speak_async("Código desconocido")
+                    #speak_async("Código desconocido")
                     continue
 
                 print(f"Recibido código {codigo} -> acción {accion}")

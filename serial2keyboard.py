@@ -367,9 +367,9 @@ def main(port: str, baud: int, timeout: float, debounce_seconds: float):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Controlador por serial que ejecuta acciones en Windows según códigos recibidos (con TTS).")
-    parser.add_argument("--port", "-p", type=str, required=True,
+    parser.add_argument("--port", "-p", type=str, default="COM3",
                         help="Puerto serial (ej: COM3)")
-    parser.add_argument("--baud", "-b", type=int, default=9600,
+    parser.add_argument("--baud", "-b", type=int, default=115200,
                         help="Baudrate (por defecto: 9600)")
     parser.add_argument("--timeout", "-t", type=float, default=0.5,
                         help="Timeout de lectura en segundos (por defecto: 1.0)")

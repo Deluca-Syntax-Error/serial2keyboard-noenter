@@ -138,10 +138,10 @@ def ejecutar_accion(opcion):
     # Opciones 3-6 (movimiento) NO harán TTS según tu pedido.
     match opcion:
         case 1:
-            print("Apagando sistema...")
-            speak_async("Apagando el equipo")
-            time.sleep(2)  # Dar tiempo a que hable antes de apagar
-            os.system("shutdown /s /t 1")
+            print("Bloqueando sistema...")
+            speak_async("Bloqueando el equipo")
+            time.sleep(2)  # Dar tiempo a que hable antes de bloquear
+            os.system("rundll32.exe user32.dll,LockWorkStation")
 
         case 2:
             if movermouse:
@@ -237,7 +237,7 @@ def ejecutar_accion(opcion):
             os.system("start explorer")
 
         case 15:
-            path_img = "tutorial.png"
+            path_img = "tutorial.jpeg"
             print(f"Abrir imagen: {path_img}")
             try:
                 os.startfile(path_img)
@@ -367,9 +367,9 @@ def main(port: str, baud: int, timeout: float, debounce_seconds: float):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Controlador por serial que ejecuta acciones en Windows según códigos recibidos (con TTS).")
-    parser.add_argument("--port", "-p", type=str, required=True,
+    parser.add_argument("--port", "-p", type=str, default="COM3",
                         help="Puerto serial (ej: COM3)")
-    parser.add_argument("--baud", "-b", type=int, default=9600,
+    parser.add_argument("--baud", "-b", type=int, default=115200,
                         help="Baudrate (por defecto: 9600)")
     parser.add_argument("--timeout", "-t", type=float, default=0.5,
                         help="Timeout de lectura en segundos (por defecto: 1.0)")

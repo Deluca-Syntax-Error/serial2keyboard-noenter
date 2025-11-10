@@ -54,15 +54,13 @@ int getIrKey() {
     if(key<0) key = -key;
     
     return key;
-  } else if (len > 500) { // código corto (hold)
+  } else if (len > 100) { // código corto (hold)
     return lastKey;
   }
 
   return 0;
 }
 
-<<<<<<< HEAD
-=======
 int sendText(char* tx) {
   Serial.write(tx);
   Serial.write(0x02);
@@ -102,4 +100,4 @@ int vol(char v, int cant) {
   }
   return 0;
 }
->>>>>>> 24916d06ea6a12c5da61bcfc4911f00031c9bc60
+
